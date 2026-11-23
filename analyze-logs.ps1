@@ -12,8 +12,22 @@ $logs = Import-Csv $logPath
 
 Write-Host "`n=== GoSimplify360 Monitoring Dashboard ===" -ForegroundColor Cyan
 
-$errors = $logs | Where-Object { [int]$_.status -ge 400 }
+# Count total requests
+$totalRequests = $logs.Count
 
+# Count HTTP status codes
+Write-Host "`nHTTP Status Code Summary:" -ForegroundColor Cyan
+
+$logs | Group-Object status | Sort-Object Name | ForEach-Object {
+    Write-Host "HTTP $($_.Name): $($_.Count) request(s)"
+}
+
+# Identify errors
+$errors = @(
+    $logs | Where-Object { [int]$_.status -ge 400 }
+)
+
+# Classify errors
 $classifiedErrors = foreach ($log in $errors) {
     $priority = switch ([int]$log.status) {
         500 { "HIGH" }
@@ -33,8 +47,11 @@ $classifiedErrors = foreach ($log in $errors) {
 Write-Host "`nError Priority Report:" -ForegroundColor Yellow
 $classifiedErrors | Format-Table -AutoSize
 
+# Identify high-priority errors
 $highPriorityErrors = @(
-    $classifiedErrors | Where-Object { $_.Priority -eq "HIGH" }
+    $classifiedErrors | Where-Object {
+        $_.Priority -eq "HIGH"
+    }
 )
 
 if ($highPriorityErrors.Count -gt 0) {
@@ -45,6 +62,14 @@ if ($highPriorityErrors.Count -gt 0) {
         Write-Host "Issue: $($item.Message)" -ForegroundColor Yellow
     }
 }
+else {
+    Write-Host "`nNo high-priority errors detected." -ForegroundColor Green
+}
 
-Write-Host "`nTotal errors detected: $($errors.Count)" -ForegroundColor Red
+# Final monitoring summary
+Write-Host "`n=== Monitoring Summary ===" -ForegroundColor Cyan
+Write-Host "Total requests: $totalRequests"
+Write-Host "Total errors: $($errors.Count)"
+Write-Host "High-priority errors: $($highPriorityErrors.Count)"
+
 Write-Host "`nMonitoring completed." -ForegroundColor Green
