@@ -84,4 +84,4 @@ These AWS services are proposed design components and have not been deployed or 
 
 ---
 **Project:** GoSimplify360 – AWS Cloud Engineering Portfolio  
-**Author:** Gopagani Alekhya
+**Author:** Alekhya Gopagani
