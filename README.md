@@ -1,16 +1,100 @@
-# React + Vite
+# GoSimplify360
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A responsive web application providing useful everyday tools, built with React and Vite.
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+GoSimplify360 brings multiple productivity utilities together in one simple, accessible interface.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Word Counter
+- Age Calculator
+- QR Code Generator
+- Unit Converter
+- Password Generator
+- Percentage Calculator
+- Responsive user interface
 
-## Expanding the Oxlint configuration
+## Technology Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- React
+- JavaScript
+- Vite
+- HTML5
+- CSS3
+- Git and GitHub
+
+## Local Development
+
+Prerequisites: Node.js and npm.
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/gopagani-alekhya/gosimplify360.git
+   ```
+
+2. Enter the project directory:
+
+   ```bash
+   cd gosimplify360
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Build the application:
+
+   ```bash
+   npm run build
+   ```
+
+## AWS Architecture and Cloud Learning
+
+This project includes an AWS-ready architecture design covering:
+
+- Amazon S3 for private static website storage
+- Amazon CloudFront for content delivery
+- Origin Access Control (OAC)
+- IAM least-privilege access design
+- CloudWatch monitoring concepts
+- CloudTrail audit planning
+- AWS cost optimization strategy
+- Incident response documentation
+
+These AWS components are documented as a proposed architecture. The application has not been deployed to AWS.
+
+## CI/CD
+
+A GitHub Actions workflow is configured to:
+
+- Install project dependencies
+- Build the React application
+- Validate builds on pushes and pull requests to `main`
+
+The CI workflow has been successfully executed.
+
+## Local Monitoring Project
+
+A PowerShell script analyzes fictional sample website access logs, classifies HTTP errors, and produces a monitoring summary.
+
+## Project Status
+
+- React application: locally built and tested
+- GitHub Actions CI: implemented and tested
+- AWS architecture: designed and documented
+- AWS deployment: not yet performed
+
+## Author
+
+Alekhya Gopagani
